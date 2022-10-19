@@ -1,0 +1,31 @@
+import personas.*
+import planetas.*
+
+describe "test con planetas" {
+	
+	var julieta = new Persona(edad = 42)
+	var ana = new Atleta(edad = 25)
+	var rosa = new Atleta(edad = 45,cantTecnicasQueConoce = 8)
+	var perla = new Atleta(edad = 28,cantTecnicasQueConoce = 4,masaMuscular = 6)
+	var monica = new Docente(edad = 45,cantCursos = 6) 
+	var luisa = new Docente(edad = 35,cantCursos = 1)
+	var federico = new Soldado(edad = 50)
+	var agustin = new Soldado(edad = 24)
+	var pistolete = new Pistolete(largo = 8)
+	var espadon = new Espadon(peso = 20)
+	var triton = new Planeta()
+	var purpura = new Planeta()
+	
+	method initialize() {
+		federico.agregarArma(pistolete)
+		federico.agregarArma(espadon)
+		agustin.agregarArma(pistolete)
+		agustin.agregarArma(espadon)
+		
+	}
+	
+	test "la potencia de federico es de 24" {
+	assert.that(true)
+	}
+	
+}

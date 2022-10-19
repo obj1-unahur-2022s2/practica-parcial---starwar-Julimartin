@@ -1,0 +1,131 @@
+import personas.*
+import planetas.*
+
+describe "Verificacion de atributos de las personas" {
+	
+	var julieta = new Persona(edad = 42)
+	var ana = new Atleta(edad = 25)
+	var rosa = new Atleta(edad = 45,cantTecnicasQueConoce = 8)
+	var perla = new Atleta(edad = 28,cantTecnicasQueConoce = 4,masaMuscular = 6)
+	var monica = new Docente(edad = 45,cantCursos = 6) 
+	var luisa = new Docente(edad = 35,cantCursos = 1) 
+	
+	test "La potencia de Julieta es de 20" {
+		assert.equals(20, julieta.potencia())
+	}
+	
+	test "La potencia de Ana es de 28" {
+		assert.equals(28, ana.potencia())
+	}
+	
+	test "La potencia de Rosa es de 52" {
+		assert.equals(52, rosa.potencia())
+	}
+	
+	test "La potencia de Perla es de 44" {
+		assert.equals(44, perla.potencia())
+	}
+	
+	test "La potencia de Monica es de 20" {
+		assert.equals(20, monica.potencia())
+	}
+	
+	test "La potencia de Luisa es de 20" {
+		assert.equals(20, luisa.potencia())
+	}
+	
+	test "La inteligencia de Julieta es de 8" {
+		assert.equals(8, julieta.inteligencia())
+	}
+	
+	test "La inteligencia de Ana es de 12" {
+		assert.equals(12, ana.inteligencia())
+	}
+	
+	test "La inteligencia de Rosa es de 8" {
+		assert.equals(8, rosa.inteligencia())
+	}
+	
+	test "La inteligencia de Perla es de 12" {
+		assert.equals(12, perla.inteligencia())
+	}
+	
+	test "La inteligencia de Monica es de 20" {
+		assert.equals(20, monica.inteligencia())
+	}
+	
+	test "La inteligencia de Luisa es de 14" {
+		assert.equals(14, luisa.inteligencia())
+	}
+	
+	test "Julieta no es destacada" {
+		assert.notThat(julieta.esDestacado())
+	}
+	
+	test "Ana es destacada" {
+		assert.that(ana.esDestacado())
+	}
+	
+	test "Rosa es destacada" {
+		assert.that(rosa.esDestacado())
+	}
+	
+	test "Perla no es destacada" {
+		assert.notThat(perla.esDestacado())
+	}
+	
+	test "Monica es destacada" {
+		assert.that(monica.esDestacado())
+	}
+	
+	test "Luisa no es destacada" {
+		assert.notThat(luisa.esDestacado())
+	}
+	
+}
+
+describe "Test del planeta Triton" {
+	
+	var triton = new Planeta()
+	var julieta = new Persona(edad = 42)
+	var ana = new Atleta(edad = 25)
+	var rosa = new Atleta(edad = 45,cantTecnicasQueConoce = 8)
+	var perla = new Atleta(edad = 28,cantTecnicasQueConoce = 4,masaMuscular = 6)
+	var monica = new Docente(edad = 45,cantCursos = 6) 
+	var luisa = new Docente(edad = 35,cantCursos = 1) 
+	
+	method initialize() {
+		triton.agregarHabitante(julieta)
+		triton.agregarHabitante(ana)
+		triton.agregarHabitante(rosa)
+		triton.agregarHabitante(perla)
+		triton.agregarHabitante(monica)
+		triton.agregarHabitante(luisa)
+	}
+	
+	test "la delegación diplomática está formada por Ana, Rosa y Mónica" {
+		assert.equals([ana,rosa, monica], triton.delegacionDiplomatica())
+	}
+	
+	test "El valor inicial de defensa es 2" {
+		assert.equals(2, triton.valorInicialDeDefensa())
+	}
+	
+	test "No es un planeta culto" {
+		assert.notThat(triton.esCulto())
+	}
+	
+	test "la potencia real es 184" {
+		assert.equals(184, triton.potenciaReal())
+	}
+	
+	test "Perla entrena 15 dias y aprende una tecnica. " {
+		perla.entrenar(15)
+		perla.aprenderUnaTecnica()
+		assert.equals(65, perla.potencia())
+		assert.notThat(perla.esDestacado())
+		perla.aprenderUnaTecnica()
+		assert.that(perla.esDestacado())
+	}
+}
+
